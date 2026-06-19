@@ -8,19 +8,19 @@ struct BankAccount
     int number;
     string name;
     double balance;
-    double newBalance;
 };
 
-void updateBalance(BankAccount& account) {
-    account.balance = account.newBalance;
+void updateBalance(BankAccount& account, double newBalance) {
+    account.balance = newBalance;
 }
 
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    
+
     BankAccount account;
+    double newBalance;
     cout << "Введите номер счёта: ";
     cin >> account.number;
     std::cout << "Введите имя владельца: ";
@@ -28,10 +28,12 @@ int main()
     std::cout << "Введите баланс: ";
     std::cin >> account.balance;
     std::cout << "Введите новый баланс: ";
-    std::cin >> account.newBalance;
-    updateBalance(account);
+    std::cin >> newBalance;
+
+    updateBalance(account, newBalance);
+
     std::cout << "Ваш счёт: " << account.name << ", "
-              << account.number << ", баланс: "
-              << account.balance << std::endl;
+        << account.number << ", баланс: "
+        << account.balance << std::endl;
     return 0;
 }
